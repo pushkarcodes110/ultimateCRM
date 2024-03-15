@@ -1,0 +1,18 @@
+-Base pages/templates 
+                create app for pages
+                create base templates 
+                create front end page
+                create about us page 
+
+authentication 
+                create database models for userprofile
+                make it possible to signup, login, and logout
+
+simple dashboard
+create new leads 
+change and delete leads 
+convert leads to clients 
+change and delete clients 
+implement solution for teams
+implement payment solution / most recurrying payments 
+deploy
