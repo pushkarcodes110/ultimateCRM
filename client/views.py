@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Client
 from .forms import AddClientForm
+from teams.models import Team
 
 # Create your views here.
 @login_required
@@ -55,9 +56,11 @@ def clients_add(request):
         form = AddClientForm(request.POST)
 
         if form.is_valid():
-            lead = form.save(commit=False)
-            lead.created_by = request.user
-            lead.save()
+            team=Team.objects.filter(created_by=request.user)[0]
+            client = form.save(commit=False)
+            client.created_by = request.user
+            client.team=team
+            client.save()
 
             messages.success(request, "The Client was Created")
 

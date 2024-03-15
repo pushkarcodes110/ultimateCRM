@@ -18,10 +18,8 @@
                 <a href="{% url 'dashboard' %}" class="py-2 px-4 bg-teal-600 rounded-lg text-white">Dashboard</a>
                 <a href="{% url 'leads_list' %}" class="py-2 px-4 bg-teal-600 rounded-lg text-white">Leads</a>
                 <a href="{% url 'clients_list' %}" class="py-2 px-4 bg-teal-600 rounded-lg text-white">Clients</a>
-                <form action="{% url 'logout' %}" method="post" class="inline">
-                    {% csrf_token %}
-                    <button type="submit" class="py-2 px-4 bg-red-600 rounded-lg text-white">Log Out</button>
-                </form>
+                <a href="{% url 'account' %}" class="py-2 px-4 bg-teal-600 rounded-lg text-white">My Account</a>
+                 
             {% else %}
                 <a href="{% url 'login' %}" class="py-2 px-4 bg-teal-600 rounded-lg text-white">Log in</a>
                 <a href="{% url 'signup' %}" class="py-2 px-4 bg-teal-300 rounded-lg text-white">Sign up</a>

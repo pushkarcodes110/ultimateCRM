@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Lead
 from client.models import Client
+from teams.models import Team
 
 from .forms import AddLeadForm
 
@@ -52,8 +53,10 @@ def add_lead(request):
         form = AddLeadForm(request.POST)
 
         if form.is_valid():
+            team=Team.objects.filter(created_by=request.user)[0]
             lead = form.save(commit=False)
             lead.created_by = request.user
+            lead.team=team
             lead.save()
 
             messages.success(request, "The Lead was Created")
@@ -68,12 +71,15 @@ def add_lead(request):
 @login_required
 def convert_to_client(request, pk):
     lead = get_object_or_404(Lead, created_by=request.user, pk=pk)
+    team=Team.objects.filter(created_by=request.user)[0]
+    
 
     client=Client.objects.create(
         name=lead.name,
         email =lead.email,
         description=lead.description, 
         created_by = request.user,
+        team=team,
     )
     lead.converted_to_client = True 
     lead.save()
