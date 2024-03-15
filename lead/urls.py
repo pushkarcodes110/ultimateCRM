@@ -6,6 +6,7 @@ urlpatterns =[
     path('<int:pk>/', views.leads_details, name="leads_detail"),
     path('<int:pk>/delete/', views.lead_delete, name="leads_delete"),
     path('<int:pk>/edit /', views.leads_edit, name="leads_edit"),
+    path('<int:pk>/convert /', views.convert_to_client, name="leads_convert"),
 
     path('', views.leads_list, name='leads_list'),
 ]

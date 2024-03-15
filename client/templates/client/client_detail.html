@@ -1,0 +1,37 @@
+{%extends 'core/base.html' %}
+
+{% block title %} {{client.name}} {% endblock %}
+
+
+
+
+{%block content %}
+    <div>
+        <h1 class="mb-4 text-xl">{{client.name}}</h1>
+        <hr>
+        {% if client.description %}
+           <p class=" font-semibold">Description</p>
+           <p class="mb-2">{{client.description}}</p>
+        {% endif %}
+        <hr>
+
+        <p class=" font-semibold">Created at</p>   
+        <p class="mb-2">{{client.created_at}}</p> 
+        <hr>
+
+        <p class=" font-semibold">Modified at </p>   
+        <p class="mb-6">{{client.modified_at}}</p> 
+        <hr class="my-4">
+
+        <a href="{% url 'clients_edit' client.id %}" class="py-2 px-4 rounded-xl text-white bg-teal-500">Edit </a>
+        <a href="{% url 'clients_delete' client.id %}" class="py-2 px-4 rounded-xl text-white bg-red-500">Delete</a>
+
+
+        <hr class="my-4">
+
+        <a href="{% url 'clients_list' %}">Back to Clients</a>
+    
+    </div>
+
+
+{% endblock %}
