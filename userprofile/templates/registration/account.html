@@ -13,6 +13,14 @@
 
     <p class="mb-2">
         <strong>Team: </strong>{{team.name}}
+
+        {%if team.created_by == request.user %}
+           <a href="{% url 'edit_team' team.id%}">(Edit)</a>
+
+        
+        {%endif%}
+
+
     </p>
 
     <hr class="mb-4">
